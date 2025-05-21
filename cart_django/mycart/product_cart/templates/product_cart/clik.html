@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click Counter</title>
+    <script>
+        async function getCount() {
+            const response = await fetch('/product_cart/counter/');
+            const data = await response.json();
+            document.getElementById('count').innerText = data.count;
+            document.getElementById('level').innerText = data.level; // Display current level
+        }
+
+        async function incrementCount() {
+            await fetch('/product_cart/counter/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            getCount();
+        }
+
+        async function purchaseLevel() {
+            await fetch('/product_cart/purchase_level/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            getCount(); // Refresh the count and level after purchase
+        }
+
+        async function autoClick() {
+            const response = await fetch('/product_cart/auto_click/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            const data = await response.json();
+            getCount(); // Refresh the count and level after auto click
+        }
+
+        window.onload = getCount;
+    </script>
+</head>
+<body>
+    <h1>Количество нажатий: <span id="count">0</span></h1>
+    <h2>Текущий уровень: <span id="level">1</span></h2>
+    <button onclick="incrementCount()">Нажми меня!</button>
+    <button onclick="purchaseLevel()">Купить уровень</button>
+    <button onclick="autoClick()">Автоматическая добыча</button>
+</body>
+</html>

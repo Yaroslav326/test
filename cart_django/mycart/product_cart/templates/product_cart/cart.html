@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cart</title>
+</head>
+<body>
+
+    {% if product_list %}
+    <ul>
+        {% for product in product_list %}
+
+                <p>
+                    {{ product.product }} цена {{ product.product.prais }}
+                </p>
+                    <form method="post" action="{% url 'delete_cart' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="cart_id" value="{{ product.id }}">
+                        <input type="submit" value="Удалить">
+                    </form>
+
+
+        {% endfor %}
+    </ul>
+    {% else %}
+        <p>Нет продуктов</p>
+    {% endif %}
+
+    <a href="{% url 'index'  %}">Product</a>
+</body>
+</html>
