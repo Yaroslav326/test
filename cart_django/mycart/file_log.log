@@ -1,0 +1,4 @@
+2025-05-29 22:13:14.977 | DEBUG    | product_cart.views:post:191 - Post clicer!
+2025-05-29 22:13:14.983 | DEBUG    | product_cart.views:get:176 - GET cliker
+2025-05-29 22:13:15.333 | DEBUG    | product_cart.views:get:176 - GET cliker
+2025-05-29 22:13:15.870 | DEBUG    | product_cart.views:get:176 - GET cliker

@@ -1,0 +1,16 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Лог ошибок</title>
+</head>
+<body>
+    <h1>Лог ошибок</h1>
+    {% if log_content %}
+        <pre>{{ log_content }}</pre>
+    {% else %}
+        <p>Нет ошибок или лог не найден.</p>
+    {% endif %}
+</body>
+</html>
